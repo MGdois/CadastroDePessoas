@@ -154,7 +154,7 @@ namespace CadastroDePessoas
             else
             {
                //Console.WriteLine("Usuário com o documento: " + temp + " não foi entroncado");
-                showMensagem("Usuário com o documento: \" + temp + \" não foi entroncado ");
+                showMensagem("Usuário com o documento: " + temp + " não foi entroncado ");
 
             }
 
@@ -222,6 +222,7 @@ namespace CadastroDePessoas
                 Console.WriteLine("Digite 'C' para cadastras um novo usuário.");
                 Console.WriteLine("Digite 'B' para buscar usuário.");
                 Console.WriteLine("Digite 'D' para deletar um usuário.");
+                Console.WriteLine("Digite 'H' para deletar um usuário.");
                 Console.WriteLine("Digite 'S' para encerrar o programa.");
                 Console.WriteLine(" ");
                 opcao = Console.ReadKey(true).KeyChar.ToString().ToLower();
@@ -229,16 +230,40 @@ namespace CadastroDePessoas
                 switch (opcao)
                 {
                     case "c": 
+                        if(bancoDeDados.BaseDisponivel == false)
+                        {
+                            showMensagem("Arquivo indisponível. Aguarde alguns instantes!");
+                            break;
+                        }
                         CadastraUsuario(); 
                         break;
-                    case "b": 
+                    case "b":
+                        if (bancoDeDados.BaseDisponivel == false)
+                        {
+                            showMensagem("Arquivo indisponível. Aguarde alguns instantes!");
+                            break;
+                        }
                         BuscaDocs(); 
                         break;
-                    case "d": 
+                    case "d":
+                        if (bancoDeDados.BaseDisponivel == false)
+                        {
+                            showMensagem("Arquivo indisponível. Aguarde alguns instantes!");
+                            break;
+                        }
                         RemoveUsuario(); 
                         break;
-                    case "s": 
+                    case "s":
+                        if (bancoDeDados.BaseDisponivel == false)
+                        {
+                            showMensagem("Arquivo indisponível. Aguarde alguns instantes!");
+                            break;
+                        }
                         Console.WriteLine("Encerrando programa...");
+                        break;
+                    case "h":
+                        //Mostra a hora atual
+                        showMensagem(DateTime.Now.ToString());
                         break;
                     default:
                         Console.WriteLine("Opcao Desconhecida"); 
